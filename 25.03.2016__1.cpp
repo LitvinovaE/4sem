@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 #include <iostream>
 #include <vector>
+=======
+#include <vector>
+#include <iostream>
+>>>>>>> 78b930d2fed11c63cb0209fddb7a26e614ff3757
 
 using std::cout;
 using std::endl;
