@@ -29,6 +29,8 @@ char *read(char *buf)
 
 int main()
 {
+	typedef std::map<std::string, int> MyMap;
+
 	std::ifstream file("text.txt");
 	if (!file)
 	{
@@ -37,6 +39,8 @@ int main()
 	}
 
 	char buf[50];
+	MyMap CollectWords;
+	MyMap::iterator it;
 	while (!file.eof())
 	{
 		file >> buf;
@@ -44,8 +48,31 @@ int main()
 			continue;
 		char *word = read(buf);
 		*buf = '\0';
-		cout << word << endl;
+		//cout << word << endl;
+		if (CollectWords.empty())
+			CollectWords.insert(std::pair<std::string, int>(word, 1));
+		else
+		{
+			it = CollectWords.find(word);
+			if (it != CollectWords.end())
+				it->second++;
+			else
+				CollectWords.insert(std::pair<std::string, int>(word, 1));
+		}
 	}
+
+	int size = CollectWords.size();
+	if (size)
+	{
+		it = CollectWords.begin();
+		while(it != CollectWords.end())
+		{
+			cout << it->first << " - " << it->second << endl;
+			it++;
+		}
+	}
+	else
+		cout << "There are no words in this file." << endl;
 
 	file.close();
 	return 0;
