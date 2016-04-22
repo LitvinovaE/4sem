@@ -1,7 +1,7 @@
 #include <iostream>
 
-//template <typename T>
 //class List;
+//template <typename T>
 
 template <class TNode>
 class Iterator
@@ -12,6 +12,7 @@ class Iterator
 
 	Iterator(TNode* _pNode) : pNode(_pNode) {}
 public:
+	
 	//operators
 };
 
@@ -67,6 +68,7 @@ public:
 		{
 			last = new Node<value_type>();
 			last.data = data;
+			last.prev = firs;
 			first.next = last;
 		}
 		else
@@ -74,6 +76,8 @@ public:
 			Node<value_type>* new_node = new Node<value_type>();
 			last.next = new_node;
 			new_node.data = data;
+			new_node.prev = last;
+			last = new_node;
 		}
 	};
 
@@ -92,7 +96,11 @@ public:
 		}
 		else
 		{
-			
+			Node<value_type>* new_node = new Node<value_type>();
+			new_node.data = data;
+			new_node.next = first;
+			first.prev = new_node;
+			first = new_node;
 		}
 	}
 
