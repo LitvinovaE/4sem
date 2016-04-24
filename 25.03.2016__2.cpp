@@ -1,11 +1,6 @@
 #include <iostream>
-<<<<<<< HEAD
 #include <array>
 #include <fstream>
-=======
-#include <fstream>
-#include <array>
->>>>>>> 78b930d2fed11c63cb0209fddb7a26e614ff3757
 #include <string>
 #include <cstdio>
 

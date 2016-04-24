@@ -47,8 +47,9 @@ int main()
 		if (*buf == '\0')
 			continue;
 		char *word = read(buf);
+		if (*word == '\0')
+			continue;
 		*buf = '\0';
-		//cout << word << endl;
 		if (CollectWords.empty())
 			CollectWords.insert(std::pair<std::string, int>(word, 1));
 		else
